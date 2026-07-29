@@ -15,7 +15,7 @@ pipeline {
    
         stage('Fetch code') {
             steps {
-               git branch: 'docker', url: 'https://github.com/hkhcoder/vprofile-project.git'
+               git branch: 'docker', url: 'https://github.com/al-attas/Project_Vprofile_CICD.git'
             }
 
         }
@@ -30,7 +30,7 @@ pipeline {
                success {
                   echo 'Now Archiving it...'
                   archiveArtifacts artifacts: '**/target/*.war'
-               }
+                 }
             }
         }
 
@@ -52,8 +52,8 @@ pipeline {
             }
             steps {
               withSonarQubeEnv('sonarserver') {
-                sh '''${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=vprofile \
-                   -Dsonar.projectName=vprofile \
+                sh '''${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=Project-CICD-TEST \
+                   -Dsonar.projectName=Project-CICD-TEST \
                    -Dsonar.projectVersion=1.0 \
                    -Dsonar.sources=src/ \
                    -Dsonar.java.binaries=target/test-classes/com/visualpathit/account/controllerTest/ \
