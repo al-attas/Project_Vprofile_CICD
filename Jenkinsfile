@@ -77,6 +77,28 @@ pipeline {
                 }
             }
         }
+
+        stage("Publish to Nexus") {
+          steps {
+            nexusArtifactUploader(
+              nexusVersion: 'nexus3',
+              protocol: 'http',
+              nexusUrl: '172.31.13.175:8081',
+              groupId: 'QA',
+              version: "${env.BUILD_ID}-${BUILD_TIMESTAMP}",
+              repository: 'ProjectCICDTest-Repo',
+              credentialsId: 'nexuslogin',
+              artifacts: [
+                [  artifactId: 'APP-TEST-CICD', 
+                   classifier: '', 
+                   file: 'target/vprofile-v2.war', 
+                   type: 'war'  ]
+              ]
+            )
+
+          }
+
+        }
         stage('Build App Image') {
           steps {
        
