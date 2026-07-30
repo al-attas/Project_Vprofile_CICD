@@ -14,7 +14,7 @@ pipeline {
         registryCredential = 'ecr:us-west-2:awscreds'
         appRegistry = "017540984032.dkr.ecr.us-west-2.amazonaws.com/prject-cicd-test1"
         vprofileRegistry = "https://017540984032.dkr.ecr.us-west-2.amazonaws.com"
-        cluster = "roject-cicd-ECS"
+        cluster = "project-cicd-ECS"
         service = "project-cicdTASK-service"
     }
   stages {
