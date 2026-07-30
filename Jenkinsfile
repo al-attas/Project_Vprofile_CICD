@@ -9,7 +9,7 @@ pipeline {
         jdk "JDK17"
     }
 
-
+ 
     environment {
         registryCredential = 'ecr:us-west-2:awscreds'
         appRegistry = "017540984032.dkr.ecr.us-west-2.amazonaws.com/vprofileappimg"
